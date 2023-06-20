@@ -1,0 +1,377 @@
+    /*My bespoke buttons */
+    button {
+        margin-right: 5px;
+    }
+
+    .newbutton {
+        color: whitesmoke;
+        background-color: rgb(232, 195, 232);
+        /*background-color: rgb(232, 189, 232);*/
+        border: 1px solid rgb(246, 204, 211);
+        border-radius: 0%;
+        padding: 6px;
+    }
+
+    .newbutton:hover {
+        color: whitesmoke;
+        background-color: rgb(240, 199, 242);
+    }
+
+    .newbutton::selection {
+        color: whitesmoke;
+        background-color: rgb(240, 199, 242);
+    }
+
+    .newbutton2 {
+        color: whitesmoke;
+        background-color: rgb(194, 193, 194);
+        border: 1px solid rgb(206, 206, 206);
+        border-radius: 0%;
+        padding: 6px;
+        margin-right: none;
+    }
+
+    .newbutton2:hover {
+        color: whitesmoke;
+        background-color: rgb(228, 221, 228);
+        border: 1px solid rgb(206, 206, 206);
+    }
+
+    /*REDUNDANT
+    .newbutton3 {
+        color: whitesmoke;
+        background-color: rgb(194, 193, 194);
+        border: 1px solid rgb(206, 206, 206);
+        border-radius: 0%;
+        padding: 6px;
+    }
+
+    .newbutton3:hover {
+        color: whitesmoke;
+        background-color: rgb(150, 130, 150);
+        border: 1px solid rgb(206, 206, 206);
+        border-radius: 0%;
+        padding: 6px;
+    }*/
+
+
+    /*Altered Bootstrap buttons */
+    .btn-warning,
+    .btn-danger {
+        border-radius: 0%;
+        opacity: 0.6;
+    }
+
+    .btn-success {
+        border-radius: 0%;
+        opacity: 0.9;
+    }
+
+
+    /*Styling for register/book/login button
+    adapted from codepen contribution
+    https: //codepen.io/ash_creator/pen/oNyNbNO
+    バスタイムっぽいボタン */
+
+    :root {
+        /* color type A */
+        --line_color: rgba(147, 104, 147);
+        --back_color: #FFECF6;
+
+        /* color type B */
+        /* --line_color : #1b1919 ;
+--back_color : #E9ECFF  ; */
+
+        /* color type C */
+        /* --line_color : #00135C ;
+--back_color : #DEFFFA  ; */
+    }
+
+    .button {
+        position: relative;
+        z-index: 0;
+        width: 240px;
+        height: 56px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--line_color);
+        border-color: purple;
+        border-width: 2px;
+        border-style: solid;
+        background-color: rgb(252, 250, 250);
+        transition: all .3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .button-request {
+        height: 40px;
+    }
+
+    /* Media query for small screens */
+    @media (max-width: 576px) {
+        .button {
+            width: 120px;
+            height: 40px;
+            /* Adjust the width as needed */
+        }
+    }
+
+    .button__text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .button::before,
+    .button::after,
+    .button__text::before,
+    .button__text::after {
+        content: '';
+        position: absolute;
+        height: 3px;
+        background: var(--line_color);
+        transition: all .5s ease;
+    }
+
+    .button::before {
+        top: 0;
+        letter-spacing: 3px;
+    }
+
+
+    .button:hover {
+        letter-spacing: 6px;
+    }
+
+    .button__drow1,
+    .button__drow2 {
+        position: absolute;
+        z-index: -1;
+        border-radius: 16px;
+        transform-origin: 16px 16px;
+    }
+
+    .button__drow1 {
+        top: -16px;
+        left: 40px;
+        width: 32px;
+        height: 0;
+        transform: rotate(30deg);
+    }
+
+    .button__drow2 {
+        top: 44px;
+        left: 77px;
+        width: 32px;
+        height: 0;
+        transform: rotate(-127deg);
+    }
+
+    .button__drow1::before,
+    .button__drow1::after,
+    .button__drow2::before,
+    .button__drow2::after {
+        content: '';
+        position: absolute;
+    }
+
+    .button__drow1::before {
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 32px;
+        border-radius: 16px;
+        transform-origin: 16px 16px;
+        transform: rotate(-60deg);
+    }
+
+    .button__drow1::after {
+        top: -10px;
+        left: 45px;
+        width: 0;
+        height: 32px;
+        border-radius: 16px;
+        transform-origin: 16px 16px;
+        transform: rotate(69deg);
+    }
+
+    .button__drow2::before {
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 32px;
+        border-radius: 16px;
+        transform-origin: 16px 16px;
+        transform: rotate(-146deg);
+    }
+
+    .button__drow2::after {
+        bottom: 26px;
+        left: -40px;
+        width: 0;
+        height: 32px;
+        border-radius: 16px;
+        transform-origin: 16px 16px;
+        transform: rotate(-262deg);
+    }
+
+    .button__drow1,
+    .button__drow1::before,
+    .button__drow1::after,
+    .button__drow2,
+    .button__drow2::before,
+    .button__drow2::after {
+        background: var(--back_color);
+    }
+
+    .button:hover .button__drow1 {
+        animation: drow1 ease-in .06s;
+        animation-fill-mode: forwards;
+    }
+
+    .button:hover .button__drow1::before {
+        animation: drow2 linear .08s .06s;
+        animation-fill-mode: forwards;
+    }
+
+    .button:hover .button__drow1::after {
+        animation: drow3 linear .03s .14s;
+        animation-fill-mode: forwards;
+    }
+
+    .button:hover .button__drow2 {
+        animation: drow4 linear .06s .2s;
+        animation-fill-mode: forwards;
+    }
+
+    .button:hover .button__drow2::before {
+        animation: drow3 linear .03s .26s;
+        animation-fill-mode: forwards;
+    }
+
+    .button:hover .button__drow2::after {
+        animation: drow5 linear .06s .32s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes drow1 {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 100px;
+        }
+    }
+
+    @keyframes drow2 {
+        0% {
+            width: 0;
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 0;
+        }
+
+        11% {
+            opacity: 1;
+        }
+
+        100% {
+            width: 120px;
+        }
+    }
+
+    @keyframes drow3 {
+        0% {
+            width: 0;
+        }
+
+        100% {
+            width: 80px;
+        }
+    }
+
+    @keyframes drow4 {
+        0% {
+            height: 0;
+        }
+
+        100% {
+            height: 120px;
+        }
+    }
+
+    @keyframes drow5 {
+        0% {
+            width: 0;
+        }
+
+        100% {
+            width: 124px;
+        }
+    }
+
+    .container1 {
+        width: 35%;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (max-width: 576px) {
+        .container1 {
+            width: 120px;
+            height: 40px;
+            /* Adjust the width as needed */
+        }
+    }
+
+    input.form-control:disabled {
+        background-color: rgb(252, 250, 250)
+    }
+
+    .nav-link {
+        color: purple;
+    }
+
+    .nav-link:hover {
+        color: rgb(225, 176, 225);
+    }
+
+    .nav-link:active,
+    .nav-link:focus,
+    .active {
+        color: rgb(107, 64, 107);
+    }
+
+    /*charts*/
+    .earnings-h5 {
+        margin-top: 15px
+    }
+
+    .nav {
+        justify-content: center;
+    }
+
+    .advice {
+        display: none;
+        background-color: rgba(180, 33, 80, 0.75);
+        color: whitesmoke;
+        line-height: 200%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .custom-table thead th {
+        text-align: center;
+    }

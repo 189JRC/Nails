@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+<!--Alert for booking confirmation-->
+<div id="customAlert" class="custom-alert">
+    <div class="custom-alert-content">
+        <div id="customAlertMessage" class="custom-alert-message"></div>
+        <button id="customAlertButton" class="custom-alert-button newbutton">Thanks!</button>
+    </div>
+</div>
+
+<!--Alert for cancellation request-->
+<div id="cancellationAlert" class="custom-alert">
+    <div class="custom-alert-content">
+        <div id="cancellationAlertMessage" class="custom-alert-message"></div>
+        <button id="cancellationAlertButton" class="newbutton custom-alert-button"></button>
+        {% csrf_token %}
+    </div>
+</div>
+
+<div class="container text-center colour-divider">
+    <div class="row">
+        <!--Customer id data embedded in headline-->
+        <h1 id="customer-greeting" data="{{ customer_id }}">{{ greeting }}, {{ user }}</h1>
+        <p id="dateStringHolder" data="1">{{ quote }}</p>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-8 col-lg-6">
+            <div id="btnGroup" role="group" class="d-flex flex-wrap justify-content-center">
+                <button id="trigger-bookings" type="button" class="newbutton mb-2">Appointments</button>
+                <button id="trigger-my-appointments" type="button" class="newbutton mb-2">My Bookings</button>
+                <a href="{% url 'logout' %}"><button type="button" class="newbutton mb-2">Log Out</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Bookings page triggered by clicking "Book Appointment" button.-->
+<!--IF CUSTOMER DOESNT HAVE APPOINTMENT LOAD THIS PAGE FIRST, ELSE LOAD MY APPOINTMENTS-->
+<div id="bookings-page">
+    <div class="container text-center">
+        <h2 class="headline">Select an appointment time:</h2>
+        <div class="row">
+            <div class="col-sm-10 mb-2 col-md-8 col-lg-6 mx-auto">
+                <div id="overlay"></div>
+                <div id="appointmentsHook"></div>
+                <hr>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Bookings page triggered by clicking "My Bookings" button.-->
+<div id="my-appointments-page" class="container text-center">
+    <div class="row">
+        <div class="col-sm-10 mb-2 col-md-8 col-lg-6 mx-auto">
+            <h2 class="planner-cols headline">Your upcoming appointments:</h2>
+            <hr>
+            <!--Dynamically render appointments-->
+            <div id="noAppointmentsMsg">
+                <p>You have no appointments booked</p>
+                <hr>
+            </div>
+            <div id="myAptsHook"></div>
+        </div>
+    </div>
+    <div class="row colour-divider">
+        <p><strong>Booking Policy:</strong> Amendments and cancellations can only be made before 12pm on the day
+            before
+            the appointment
+            is scheduled</p>
+        <p><strong>Data Policy:</strong> By making a booking you consent to our <a href>data retention
+                policy</a></p>
+    </div>
+
+</div>
+
+<!--modal to appear on selection of appointment time-->
+<div class="modal fade" id="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header mx-auto">
+                <h5 class="modal-title" id="modalTitle"></h5>
+            </div>
+            <div class="modal-body">
+                <form id="formHook">
+                    {% csrf_token %}
+                    <div id="requestData" class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input id="name" type="text" value="{{customer_name}}" class="form-control" name="name"
+                            disabled>
+                        <label for="number" class="form-label" value="">Phone Number</label>
+                        <input id="number" type="text" class="form-control" name="number">
+                        <label for="type" class="form-label" value="">Appointment Type</label>
+                        <select id="type" name="type">
+                            <option value="0"></option>
+                            <option value="Acrylic Nails" data-price="£25" data-time="1">Acrylic Nails</option>
+                            <option value="Acrylic Toes" data-price="£20" data-time="1">Acrylic Toes</option>
+                            <option value="Acrylic Toes" data-price="£40" data-time="2">Nails & Toes</option>
+                        </select>
+                        <p id="price"></p>
+                        <input id="uid" type="hidden" name="id" />
+                        <input id="customer-uid" type="hidden" name="c_id" value="{{user.customer.id}}" />
+
+                        <!--button id="submitBtnHook" type="submit" class="btn newbutton">Request</button-->
+                        <div class="container1">
+                            <button id="submitBtnHook" type="submit" class="button button-request">
+                                <div class="button__line"></div>
+                                <div class="button__line"></div>
+                                <span class="button__text">Request</span>
+                                <div class="button__drow1"></div>
+                                <div class="button__drow2"></div>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/appointments.js' %}"></script>
+{% endblock %}

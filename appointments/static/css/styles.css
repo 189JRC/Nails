@@ -1,0 +1,171 @@
+    /*Element stylings*/
+    body {
+        background-color: rgb(252, 250, 250);
+        color: rgb(166, 118, 166);
+        font-family: 'Raleway', sans-serif;
+    }
+
+    h1,
+    h5 {
+        font-weight: 400;
+    }
+
+    h5 {
+        margin-top: 5px;
+    }
+
+    .headline {
+        font-size: 25px;
+        margin-top: 13px;
+    }
+
+    @media (max-width: 576px) {
+        .headline {
+            font-size: 20px;
+            margin-top: 8px;
+        }
+    }
+
+    hr {
+        color: rgb(72, 24, 72)
+    }
+
+    /*REDUNDANT
+    .styled-hr {
+        border: none;
+        height: 4px;
+        background-color: rgb(72, 24, 72);
+        margin-top: -5px;
+    }*/
+
+    /*Row stylings */
+    .expired-appointment {
+        opacity: 0.6;
+        background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fst2.depositphotos.com%2F1106005%2F5489%2Fi%2F950%2Fdepositphotos_54894773-stock-photo-light-gray-striped-pattern-repeat.jpg&f=1&nofb=1&ipt=524a11cd9b5636819b1c1fcc218a6219dab68a6f311576261b89475b660ccbc4&ipo=images");
+        margin-bottom: 2px;
+        font-weight: bold;
+    }
+
+    .appointment-data-row {
+        margin-bottom: 2px;
+    }
+
+    .colour-divider {
+        background-color: #fff6fa;
+    }
+
+    /*Modal & Alert Stylings */
+    .modal-dialog-fixed-width {
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .custom-alert {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+    }
+
+    .custom-alert-content {
+        background-color: whitesmoke;
+        border: 3px solid purple;
+        border-radius: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .custom-alert-message {
+        margin-bottom: 10px;
+    }
+
+    /*Form field stylings */
+
+    .form-control,
+    select {
+        border-radius: 0;
+        border: 1px solid rgba(239, 184, 239, 0.5);
+        box-shadow: none;
+        outline: none;
+        width: 70%;
+        margin: 0 auto 10px auto;
+        color: rgb(123, 74, 132);
+        font-style: italic;
+    }
+
+    .form-control::placeholder {
+        color: lightgray;
+        font-style: italic;
+        /* Set the color for the placeholder text */
+    }
+
+    .form-control:not(:placeholder-shown) {
+        color: rgb(123, 74, 132);
+        /* Set the color for the input text while typing */
+    }
+
+    .form-control:valid {
+        color: rgb(123, 74, 132);
+    }
+
+    select {
+        height: 42px;
+        background-color: #fff;
+    }
+
+    select option {
+        color: #123456;
+        /* Replace with your desired color */
+    }
+
+    label {
+        font-style: italic;
+        font-weight: 400;
+    }
+
+    #requestData {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-label {
+        margin-bottom: 5px;
+    }
+
+    /*Login box stylings*/
+
+    .login-box {
+        position: relative;
+        margin: 100px auto;
+        border: 1px solid rgb(143, 98, 143);
+        padding: 50px 50px 20px 50px;
+        background-color: rgb(252, 251, 253);
+    }
+
+    .login-title {
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+        background-color: rgb(252, 251, 253);
+        padding: 0 10px;
+    }
+
+    .nav-tabs .nav-link.active {
+        background-color: rgb(252, 250, 250);
+        color: rgb(166, 118, 166);
+    }

@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static '/js/chart.js' %}"></script>
+
+<div class="container text-center">
+    <div class="colour-divider">
+        <div class="row">
+            <h1>{{ today }}</h1>
+        </div>
+        <p id="information">This is where you can see visualisations for booking data</p>
+        <nav class="advice">
+            <strong>To see chart in greater detail, change to horizontal view and refresh page.</strong>
+        </nav>
+        <div id="nav-container" class="row row justify-content-center">
+            <ul class="nav nav-tabs col-lg-8 col-sm-12" id="myTab" role="tablist">
+                <li id="income-li" class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                        type="button" role="tab">Daily Income</button>
+                </li>
+                <li id="total-li" class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#total-income"
+                        type="button" role="tab">Total Income</button>
+                </li>
+                <li id="appointments-li" class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#appointments"
+                        type="button" role="tab">Appointments</button>
+                </li>
+                <li id="tax-li" class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#tax" type="button"
+                        role="tab">Records</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="daily-income" role="tabpanel"></div>
+                <div class="tab-pane fade" id="total-income" role="tabpanel"></div>
+                <div class="tab-pane fade" id="appointments" role="tabpanel">
+                </div>
+                <div class="tab-pane fade" id="tax" role="tabpanel">
+                    <h5 class="earnings-h5">Total earnings for current financial year:
+                        £{{ earnings }}</h5>
+                    <a href="{% url 'csv_appointment_data' %}"><button class="newbutton">Download Spreadsheet of
+                            Appointment
+                            Records</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row row justify-content-center">
+        <!--Charts 1,2,5 to occupy the same dimensions on page-->
+        <div id="chart-container" class="col-lg-8 col-md-10 col-sm-12">
+            <canvas id="chartCanvas1"></canvas>
+            <canvas id="chartCanvas2"></canvas>
+            <div id="chartCanvas5"></div>
+        </div>
+    </div>
+    <div class="row row justify-content-center">
+        <!--Charts 3,4 to occupy the same dimensions on page-->
+        <div id="chart-container" class="col-lg-4 col-md-5 col-sm-6">
+            <canvas id="chartCanvas3"></canvas>
+        </div>
+        <div id="chart-container" class="col-lg-4 col-md-5 col-sm-6">
+            <canvas id="chartCanvas4"></canvas>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

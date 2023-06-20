@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+
+Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-sm-12">
+            <div class="login-box container">
+                <h1 class="text-center login-title text-nowrap">Nails by Victoria</h1>
+                <form action="{% url 'register' %}" method="post">
+                    {% csrf_token %}
+                    <div id="requestData" class="mb-3">
+                        <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                        <input class="form-control" type="email" name="email" placeholder="Email Address">
+                        <input class="form-control" type="password" name="password" placeholder="Password">
+                        <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+                    </div>
+                    <div class="container1 container d-flex justify-content-center col-sm-6">
+                        <button type="submit" class="button">
+                            <div class="button__line"></div>
+                            <div class="button__line"></div>
+                            <span class="button__text">Register</span>
+                            <div class="button__drow1"></div>
+                            <div class="button__drow2"></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

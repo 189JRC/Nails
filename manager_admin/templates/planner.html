@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block body %}
+
+<head>
+  <script src="{% static 'js/planner.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<div class="container text-center">
+  <div class="row">
+    <h1>{{today}}</h1>
+    <h5>You have <strong>{{ appointments.count }}</strong> scheduled appointments</h5>
+    <h5>You have <strong>{{ booked_appointments.count }}</strong> upcoming bookings</h5>
+  </div>
+  <p>Manage your future workschedule and view upcoming booking information.</p>
+  <p><strong><u>Past appointments require your acknowledgement.</u></strong></p>
+
+  <!-- Heading row for appending each day/date of appointments-->
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <p id="appointmentsHook"></p>
+      <hr>
+    </div>
+  </div>
+
+  <!-- final row for button to create option to create a new week of appointments -->
+  <div class="row">
+    <hr>
+    <p>Create Appointments for week starting:
+      {{next_available_weekday}},
+      {{next_available }}</p>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <a href="{% url 'manager_admin:generate' %}"><button class="btn btn-danger">Create Appointments</button></a>
+      <br><br>
+    </div>
+  </div>
+</div>
+
+<!--cancelAppointmentModal to appear when manager chooses to cancel an appointment that is already booked-->
+<div class="modal fade" id="cancelAppointmentModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <h5 class="modal-title" id="modalTitle" data="">Cancel Appointment</h5>
+      </div>
+      <div class="modal-body mx-auto">
+        <p>This Appointment has been booked by a customer.</p>
+        <p>Are you sure you want to cancel this appointment?</p>
+        <div class="modal-footer mx-auto d-flex justify-content-center">
+          <button id="submitBtnHook" type="button" class="btn btn-danger"
+            onclick="cancelAppointment(event)">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--acknowledgeModal to appear when manager acknowledges a past appointment that was booked.-->
+<div class="modal fade" id="acknowledgeModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header mx-auto">
+        <h5 class="modal-title" id="modalTitle" data="">Acknowledge</h5>
+      </div>
+      <div class="modal-body">
+        <form id="formHook">
+          {% csrf_token %}
+          <div id="requestData" class="mb-3">
+            <label for="Earnings" class="form-label">What were your earnings for this
+              appointment?</label>
+            <input id="Earnings" type="text" class="form-control" name="Earnings">
+            <input id="uid" type="hidden" name="id" />
+            <input id="customer-uid" type="hidden" name="c_id" />
+          </div>
+          <div class="modal-footer mx-auto d-flex justify-content-center">
+            <button id="submitBtnHook" type="submit" class="btn btn-danger" onclick="makeRecord(event)">Make
+              Record</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

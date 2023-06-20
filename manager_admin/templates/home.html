@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container text-center colour-divider">
+  <div class="row">
+    <h1>{{ greeting }}, {{ user }}</h1>
+  </div>
+  <div class="row">
+    <p>Manage your upcoming appointments or view appoinment records</p>
+    <div class="row justify-content-center mx-auto">
+      <div class="col-sm-12 col-md-8 col-lg-6">
+        <div id="btnGroup" role="group" class="d-flex flex-wrap justify-content-center">
+          <a href="{% url 'manager_admin:planner' %}"><button type="button" class="newbutton mb-2" id="btn1">My
+              Planner</button></a>
+          <a href="{% url 'chart' %}"><button type="button" class="newbutton mb-2" id="btn2">
+              View Records</button></a>
+          <a href="{% url 'logout' %}"><button type="button" class="newbutton mb-2" id="btn3">Log Out</button></a>
+        </div>
+      </div>
+    </div>
+    {{ services }}
+  </div>
+</div>
+{% endblock %}
